@@ -161,6 +161,9 @@ var myGroceryList = ['chips', 'pizza', 'hotpockets', 'MtnDew', 'corndogs'];
 
   //Code Here
   function removeItem(myGroceryList,item){
+    if(arguments.length <= 0){
+      return [];
+    }
     for(var i=0; i < myGroceryList.length; i++){
       if(myGroceryList[i] === item){
         myGroceryList.splice(i,1);
@@ -169,6 +172,9 @@ var myGroceryList = ['chips', 'pizza', 'hotpockets', 'MtnDew', 'corndogs'];
   }
 
   function addItem(myGroceryList,item){
+    if(arguments.length <= 0){
+      return [];
+    }
    	var foundItem = false;
     for(var i=0; i < myGroceryList.length; i++){
       if(myGroceryList[i] === item){
@@ -213,12 +219,14 @@ var numbers = [5, '9', 16, 19, '25', '34', 48];
 
   //Code Here
 
-function addTen (numbers) {
-  var newArray = [];
-  for(var i=0;i<numbers.length; i++){
-    var newArray = numbers[i] + 10;
-  }return newArray;
-}
+
+  function addTen(numbers) {
+    var newArray = [];
+    for(var i=0;i<numbers.length; i++){
+      newArray.push(parseInt(numbers[i]) + 10);
+    }return newArray;
+  }
+  console.log(addTen(numbers));
 
 //Next Problem
 
@@ -239,11 +247,9 @@ for(var i = 0; i < num2; i++){
 
   //Code Here
 function longer(arr1,arr2) {
-  for(var i=0; i<arr1.length;i++){
-    if(arr1.length > arr2.length){
+  if(arr1.length > arr2.length){
       return arr1;
-    }
-  }return arr2;
+    }return arr2;
   }
 
 /*As a continuation of the previous problem, write another function called 'both'.
@@ -256,9 +262,11 @@ function longer(arr1,arr2) {
 function both(arr1,arr2){
   var newArray = [];
   for(var i=0; i<arr1.length;i++){
-    if(arr1[i] === arr2[i]){
-      newArray.push(i);
+    for(var a=0; a<arr2.length;a++){
+    if(arr1[i] === arr2[a]){
+      newArray.push(arr1[i]);
     }
+  }
   }return newArray;
 }
 
@@ -299,7 +307,7 @@ array with those four objects. After that console.log the length of the Array an
 sure that it's equal to 4. */
 
   //Code Here
-devMountainEmployees.push(cahlan,ryan,colt);
+devMountainEmployees.push(tyler,cahlan,ryan,colt);
 console.log(devMountainEmployees.length);
 /*Now let's say Cahlan has a mental breakdown and has to take a leave of absence to 'find himself'.
 Loop through your devMountainEmployees until you find cahlan, then remove him from the array.*/
@@ -364,11 +372,20 @@ var user1 = {
 };
 
 //Your Code Here
-users.name = {};
-users.email = {};
-users.password = {};
-users.username = {};
+users.push({
+  name: 'bret',
+  email: 'bretmcginnis33@gmail.com',
+  password: 'breteJavaScript',
+  username: 'bretniateLoop'
+});
+users.push({
+  name: 'Andrew McGinnis',
+  email: 'Andrewmcginnis33@gmail.com',
+  password: 'AndrewJavaScript',
+  username: 'AndrewiateLoop'
+});
 users.push(user1);
+
 /*Now you have a very common data structure. Twitter is a good use case.
 It's easy to imagine that your followers list on Twitter is an Array full or objects
 and those objects contain properties about the specific person you follow.*/
@@ -379,7 +396,7 @@ Once you find the particular index he's located in, delete him from the array.*/
 
   //Code Here
 for(var i=0; i<users.length; i++){
-  if(users[i] === 'tylermcginnis33@gmail.com'){
+  if(users[i].email === 'tylermcginnis33@gmail.com'){
     users.splice(i,1);
     break;
   }
